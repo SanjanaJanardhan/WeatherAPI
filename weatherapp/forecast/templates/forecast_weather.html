@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forecast Weather for {{ city }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'weather.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Forecast Weather for {{ city }}</h1>
+        {% for day in forecast_data %}
+            <div class="forecast-day">
+                <h2>{{ day.date }}</h2>
+                <p><strong>Condition:</strong> {{ day.day.condition.text }}</p>
+                <img src="{{ day.day.condition.icon }}" alt="{{ day.day.condition.text }}">
+                <p><strong>Max Temp:</strong> {{ day.day.maxtemp_c }}°C</p>
+                <p><strong>Min Temp:</strong> {{ day.day.mintemp_c }}°C</p>
+                <p><strong>Avg Temp:</strong> {{ day.day.avgtemp_c }}°C</p>
+                <p><strong>Humidity:</strong> {{ day.day.avghumidity }}%</p>
+                <p><strong>Chance of Rain:</strong> {{ day.day.daily_chance_of_rain }}%</p>
+                <p><strong>Total Precipitation:</strong> {{ day.day.totalprecip_mm }} mm</p>
+                <p><strong>Max Wind:</strong> {{ day.day.maxwind_kph }} km/h</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

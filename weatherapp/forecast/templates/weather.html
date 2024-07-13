@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather for {{ city }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'weather.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather for {{ city }}</h1>
+        <div class="weather-details">
+            <img class="weather-icon" src="{{ weather.current.condition.icon }}" alt="{{ weather.current.condition.text }}">
+            <p class="temperature">Temperature: {{ weather.current.temp_c }}°C</p>
+            <p class="condition">Condition: {{ weather.current.condition.text }}</p>
+        </div>
+        
+        <div class="additional-details">
+            <div class="detail-item">
+                <span>Humidity:</span> {{ weather.current.humidity }}%
+            </div>
+            <div class="detail-item">
+                <span>Wind:</span> {{ weather.current.wind_kph }} km/h {{ weather.current.wind_dir }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

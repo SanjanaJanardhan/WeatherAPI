@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Historical Weather for {{ city }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'weather.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Historical Weather for {{ city }}</h1>
+        <h2>Date: {{ weather_data.forecast.forecastday.0.date }}</h2>
+        <p><strong>Max Temp:</strong> {{ weather_data.forecast.forecastday.0.day.maxtemp_c }}°C</p>
+        <p><strong>Min Temp:</strong> {{ weather_data.forecast.forecastday.0.day.mintemp_c }}°C</p>
+        <p><strong>Avg Temp:</strong> {{ weather_data.forecast.forecastday.0.day.avgtemp_c }}°C</p>
+        <p><strong>Max Wind:</strong> {{ weather_data.forecast.forecastday.0.day.maxwind_kph }} km/h</p>
+        <p><strong>Humidity:</strong> {{ weather_data.forecast.forecastday.0.day.avghumidity }}%</p>
+        <p><strong>Total Precipitation:</strong> {{ weather_data.forecast.forecastday.0.day.totalprecip_mm }} mm</p>
+        <p><strong>Condition:</strong> {{ weather_data.forecast.forecastday.0.day.condition.text }}</p>
+        <img src="{{ weather_data.forecast.forecastday.0.day.condition.icon }}" alt="{{ weather_data.forecast.forecastday.0.day.condition.text }}">
+    </div>
+</body>
+</html>
